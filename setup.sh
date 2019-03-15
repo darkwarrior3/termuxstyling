@@ -13,7 +13,7 @@ echo "command_not_found_handle() {
 }
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:#
 \033[1;92m'
-figlet FemurTech" > bash.bashrc
+figlet $piedy" > bash.bashrc
 cd /$HOME
 cd
 cd termuxstyling

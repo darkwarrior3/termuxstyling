@@ -16,8 +16,11 @@ PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:#
 figlet FemurTech" > bash.bashrc
 cd /$HOME
 cd
+cd termuxstyling
+cat README.md
 figlet Dark
 figlet Warrior
 echo Script made by Dark Warrior
 echo subscribe our youtube channel FemurTech
 echo tinyurl.com/femurtech
+echo Restart to apply changes

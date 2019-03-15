@@ -8,4 +8,4 @@ chmod +x *.*
 
 ./back2orignal.sh or sh back2orignal.sh to uninstall styling.
 
-Special Thanks to Anurag Yadav
+Special Thanks to Anurag Yadav and Spiedyboy

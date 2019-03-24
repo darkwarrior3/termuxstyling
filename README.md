@@ -1,12 +1,13 @@
-This script will make your termux look better. Enjoy! ! 
+# Made By DarkWarrior
+### This script will make your termux look better. Enjoy! ! 
 
-Usage:-
+#### Usage:-
 
-chmod +x *.*
+1. chmod +x *.*
 
-./setup.sh or sh setup.sh to install styling. 
+2. ./setup.sh or sh setup.sh to install styling. 
 
-./back2orignal.sh or sh back2orignal.sh to uninstall styling.
+3. ./back2orignal.sh or sh back2orignal.sh to uninstall styling.
 
-Special Thanks to xenoCoder01
-for testing, modifying and helping to make this script work
+*Special Thanks to xenoCoder01
+for testing, modifying and helping to make this script work*

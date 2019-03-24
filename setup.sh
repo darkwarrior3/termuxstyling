@@ -11,7 +11,7 @@ else
 		[yY][eE][sS]|[yY])
 	rm DW.config
 	clear
-	sh hi.sh
+	sh setup.sh
 	;;
 	*)
 	uname=$(cat DW.config)
@@ -35,11 +35,16 @@ fi
 echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }
+shell() { sh \$1.sh; }
+txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:#
 \033[1;92m'
 cd /sdcard
-alias clear=\"clear;bash\"" > bash.bashrc
+alias clear=\"clear;bash\"
+alias dir=\"ls\"
+alias ins=\"pkg install\"
+alias ains=\"apt install\"" > bash.bashrc
 cd /$HOM
 cd
 cd termuxstyling

@@ -1,4 +1,4 @@
-This script will make your termux to look better. Enjoy! ! 
+This script will make your termux look better. Enjoy! ! 
 
 Usage:-
 
@@ -9,4 +9,4 @@ chmod +x *.*
 ./back2orignal.sh or sh back2orignal.sh to uninstall styling.
 
 Special Thanks to xenoCoder01
-for testing and helping to make this script work
+for testing, modifying and helping to make this script work

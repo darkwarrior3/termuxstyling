@@ -13,6 +13,7 @@
 + ins **[ usage ins \* = pkg install \* ]**
 + ains **[ usage ains \* = apt install \* ]**
 + dir **[ usage dir = ls ]**
++ update **[ usage update = apt-get update && apt-get upgrade]**
 
 #### Uninstalling
 1. ./uninst.sh or sh unist.sh or shell uninst to uninstall styling.

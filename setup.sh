@@ -9,9 +9,9 @@ else
 	read -p "Would You Like to Change Your Username[Y/N]: " ink
 	case "$ink" in
 		[yY][eE][sS]|[yY])
-	rm DW.config
-	clear
-	sh setup.sh
+	rm DW.config;
+	clear && printf "\e[3J";
+	sh setup.sh;
 	;;
 	*)
 	uname=$(cat DW.config)
@@ -25,8 +25,8 @@ apt update
 apt upgrade
 apt install figlet toilet
 pkg install ncurses-utils
-cd ..
-cd usr/etc
+pkg install cmatrix
+cd ../usr/etc
 rm motd
 if [ -z $uname ]
 then
@@ -44,14 +44,14 @@ cd /sdcard
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"
-alias ains=\"apt install\"" > bash.bashrc
-cd /$HOM
-cd
-cd termuxstyling
+alias ains=\"apt install\"
+alias matrix=\"cmatrix\"
+alias cls=\"clear\"" > bash.bashrc
+cd /sdcard/documents/termuxstyling
 cat README.md
 toilet Dark
 toilet Warrior
 echo Script made by Dark Warrior
-echo subscribe our youtube channel FemurTech
+echo Subscribe to our YT channel FemurTech
 echo tinyurl.com/femurtech
 echo Restart to apply changes

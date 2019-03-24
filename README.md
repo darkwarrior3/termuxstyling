@@ -12,7 +12,6 @@
 + ins **[ usage ins \* = pkg install \* ]**
 + ains **[ usage ains \* = apt install \* ]**
 + dir **[ usage dir = ls ]**
-+ matrix **[ usage matrix ]**
 
 #### Uninstalling
 1. ./uninst.sh or sh unist.sh or shell uninst to uninstall styling.

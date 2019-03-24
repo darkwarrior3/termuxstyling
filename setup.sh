@@ -46,7 +46,7 @@ alias ins=\"pkg install\"
 alias update=\"apt-get update && apt-get upgrade\"
 alias ains=\"apt install\"
 alias cls=\"clear\"" > bash.bashrc
-cd /sdcard/documents/termuxstyling
+cd
 cat README.md
 toilet Dark
 toilet Warrior

@@ -9,6 +9,7 @@
 #### Features
 ##### Custom Commands
 + shell **[ usage shell \* = sh \*.sh]**
++ txt **[ usage txt \* = cat \* ]**
 + ins **[ usage ins \* = pkg install \* ]**
 + ains **[ usage ains \* = apt install \* ]**
 + dir **[ usage dir = ls ]**

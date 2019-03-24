@@ -10,7 +10,7 @@ else
 	case "$ink" in
 		[yY][eE][sS]|[yY])
 	rm DW.config;
-	clear && printf "\e[3J";
+	clear
 	sh setup.sh;
 	;;
 	*)

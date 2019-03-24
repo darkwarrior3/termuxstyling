@@ -8,7 +8,7 @@
 
 #### Features
 ##### Custom Commands
-+ shell **[ usage shell \* = sh \*.sh]**
++ shell **[ usage shell \* = sh \*.sh OR bash \*.bash ]**
 + txt **[ usage txt \* = cat \* ]**
 + ins **[ usage ins \* = pkg install \* ]**
 + ains **[ usage ains \* = apt install \* ]**

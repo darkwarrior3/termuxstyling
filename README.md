@@ -10,7 +10,7 @@
 ##### Custom Commands
 + shell **[ usage shell \* = sh \*.sh]**
 + ins **[ usage ins \* = pkg install \* ]**
-+ ains **[ usage ins \* = apt install \* ]**
++ ains **[ usage ains \* = apt install \* ]**
 + dir ins **[ usage dir = ls ]**
 #### Uninstalling
 1. ./uninst.sh or sh unist.sh or shell uninst to uninstall styling.

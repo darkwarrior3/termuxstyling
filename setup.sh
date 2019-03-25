@@ -110,10 +110,11 @@ updatedw() {
 	then
 		cd termuxstyling
 		var=\$(git pull)
-		git pull && git reset --hard && chmod +x *.sh
+		git pull && prm sh
 		if [[ ! \$var == *\"Already\"* ]];then shell setup;fi
 	else
-		git clone https://github.com/darkwarrior3/termuxstyling.git && cd termuxstyling && chmod +x *.sh
+		git clone https://github.com/darkwarrior3/termuxstyling.git
+		prm sh
 		shell setup
 	fi
 }

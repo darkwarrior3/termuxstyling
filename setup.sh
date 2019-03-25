@@ -75,7 +75,7 @@ apt update
 apt upgrade
 apt install figlet toilet
 pkg install ncurses-utils
-apt-get git
+apt-get install git
 cd ../usr/etc
 rm motd
 #Set default username if found null

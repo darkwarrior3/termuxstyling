@@ -116,7 +116,7 @@ updatedw() {
 		then 
 			shell setup;
 		fi
-		clear && echo \$var && echo -------------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
+		clear && echo \"Update Success\" && echo -------------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
 		prm sh
@@ -124,7 +124,7 @@ updatedw() {
 		bash
 		shell setup
 		wait
-		clear && echo \$var && echo -------------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
+		clear && echo \"Update Success\" && echo -------------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
 	fi
 }
 prm() { chmod 777 *.\$1; }

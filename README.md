@@ -6,6 +6,11 @@
 1. chmod +x \*.\*
 2. ./setup.sh or sh setup.sh to install styling. 
 
+#### Updating
+
+1. use command **updtdw** to update the script.
+
+
 #### Features
 ##### Custom Commands
 + shell **[ usage shell \* = sh \*.sh OR bash \*.bash ]**
@@ -14,7 +19,8 @@
 + ains **[ usage ains \* = apt install \* ]**
 + dir **[ usage dir = ls ]**
 + update **[ usage update = apt-get update && apt-get upgrade]**
-+ cds **[ usage cds dir_name(***supports pattern matching***) ]**
++ cds **[ usage cds dir_name(***supports pattern matching and sub-directory navigation***) ]**
++ prm **[ usage prm ext = chmod 777 *.ext )**
 
 ###### CDS command guide
 + **Options**

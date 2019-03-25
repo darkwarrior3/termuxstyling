@@ -107,7 +107,7 @@ txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-cd /\$HOME
+cd
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"

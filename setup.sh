@@ -122,8 +122,8 @@ updatedw() {
 prm() { chmod 777 *.\$1; }
 txt() { cat \$1.*; }
 figlet $uname
-PS1='\033[0;91mroot@termux[\033[0;93m\W\033[0;91m]:
-# \033[0;92m'
+PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
+# \033[1;92m'
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"

@@ -8,7 +8,7 @@
 
 #### Updating
 
-1. use command **updtdw** to update the script.
+1. use command **updatedw** to update the script.
 
 
 #### Features

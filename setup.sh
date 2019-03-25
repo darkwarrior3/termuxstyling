@@ -123,7 +123,7 @@ prm() { chmod 777 *.\$1; }
 txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[0;91mroot@termux[\033[0;93m\W\033[0;91m]:
-# \033[;92m'
+# \033[0;92m'
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"
@@ -135,7 +135,7 @@ alias ains=\"apt install\"
 alias cls=\"clear\"
 alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
 cd /$HOME
-cds termuxstyling
+cd termuxstyling
 cat README.md
 toilet Dark
 toilet Warrior

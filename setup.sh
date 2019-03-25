@@ -110,17 +110,17 @@ updatedw() {
 	then
 		cd termuxstyling
 		var=\$(git pull)
-		git pull
+		git pull && git reset --hard && chmod +x *.sh
 		if [[ ! \$var == *\"Already\"* ]];then shell setup;fi
 	else
-		git clone https://github.com/darkwarrior3/termuxstyling
+		git clone https://github.com/darkwarrior3/termuxstyling.git && cd termuxstyling && chmod +x *.sh
 		shell setup
 	fi
 }
 prm() { chmod 777 *.\$1; }
 txt() { cat \$1.*; }
 figlet $uname
-PS1='\033[0;91mroot@termux[\033[1;93m\W\033[0;91m]:
+PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[0;92m'
 cd
 alias clear=\"clear;bash\"

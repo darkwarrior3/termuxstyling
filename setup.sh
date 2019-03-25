@@ -104,14 +104,17 @@ cds() {
 		cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -name \"\$1\" -print -quit )\"
 	fi
 }
-updtdw() {
+updatedw() {
 	cd \$HOME
 	if [ -d \"\$HOME/termuxstyling\" ]
 	then
 		cd termuxstyling
+		var=\$(git pull)
 		git pull
+		if [[ ! \$var == *\"Already\"* ]];then shell setup;fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling
+		shell setup
 	fi
 }
 prm() { chmod 777 *.\$1; }

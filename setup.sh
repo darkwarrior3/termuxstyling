@@ -105,6 +105,20 @@ cds() {
 		cd \"\$( find \"\$(pwd)/\" -maxdepth 3 -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -name \"\$1\" -print -quit )\"
 	fi
 }
+cdp() { 
+	if [[ \$* == *\"-i\"* ]]
+	then
+		var=\"\$*\"
+		sub=\"\"
+		qry=\$( echo \$var | sed 's/-i//g' )
+		qry=\$( echo \$qry | sed 's/ //g' )
+		echo finding \\\"\$qry\\\"
+		cd \"\$( find \"\$(pwd)/\" -maxdepth 3 -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -iname \"\$qry\"* -print -quit )\"
+	else
+		echo finding \$1
+		cd \"\$( find \"\$(pwd)/\" -maxdepth 3 -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -name \"\$1\"* -print -quit )\"
+	fi
+}
 updatedw() {
 	cd \$HOME
 	if [ -d \"\$HOME/termuxstyling\" ]
@@ -142,7 +156,7 @@ alias ins=\"pkg install\"
 alias ains=\"apt install\"
 alias cls=\"clear\"
 alias update=\"apt-get update && apt-get upgrade\"
-if [ -e \".bash_aliases\" ];then .~/../usr/etc/.bash_aliases;fi" > bash.bashrc
+if [ -e \".bash_aliases\" ];then sh ~/../usr/etc/.bash_aliases;fi" > bash.bashrc
 cd /$HOME
 cd termuxstyling
 cat README.md

@@ -1,18 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash
 echo Script made by:- Dark Warrior
 #Uninstall
-if [ -e "user.cfg" ]
+if [ -e ".user.cfg" ]
 then
-	uname=$(sed '1q;d' user.cfg)
-	istate=$(sed '2q;d' user.cfg)
+	uname=$(sed '1q;d' .user.cfg)
+	istate=$(sed '2q;d' .user.cfg)
 	if [ "$istate" -eq "1" ]
 	then
 		read -p "Uninstall? [Y/N]: " ink1
 		case $ink1 in
 			[yY][eE][sS]|[yY])
-		rm user.cfg;
-		echo $uname > user.cfg
-		echo 0 >> user.cfg
+		rm .user.cfg;
+		echo $uname > .user.cfg
+		echo 0 >> .user.cfg
 		cd
 		cd /$HOME
 		cd ..
@@ -45,21 +45,21 @@ then
 	fi
 fi
 #Assigns Username
-if [ ! -e "user.cfg" ] 
+if [ ! -e ".user.cfg" ] 
 then
 	read -p "Type your username: " uname </dev/tty
 	echo "This is your username: $uname"
-	echo "$uname" > user.cfg
-	echo "1" >> user.cfg
+	echo "$uname" > .user.cfg
+	echo "1" >> .user.cfg
 #Rename Username
 else
-	rm user.cfg
-	echo "$uname" > user.cfg
-	echo "1" >> user.cfg
+	rm .user.cfg
+	echo "$uname" > .user.cfg
+	echo "1" >> .user.cfg
 	read -p "Would You Like to Change Your Username[Y/N]: " ink
 	case "$ink" in
 		[yY][eE][sS]|[yY])
-	rm user.cfg;
+	rm .user.cfg;
 	clear
 	sh setup.sh;
 	;;
@@ -116,7 +116,7 @@ updatedw() {
 		then 
 			shell setup;
 		fi
-		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
+		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' .ver.cfg)
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
 		prm sh
@@ -124,7 +124,7 @@ updatedw() {
 		bash
 		shell setup
 		wait
-		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
+		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' .ver.cfg)
 	fi
 }
 prm() { chmod 777 *.\$1; }
@@ -141,7 +141,8 @@ alias dir=\"ls\"
 alias ins=\"pkg install\"
 alias ains=\"apt install\"
 alias cls=\"clear\"
-alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
+alias update=\"apt-get update && apt-get upgrade\"
+if [ -e \".bash_aliases\" ];then .~/../usr/etc/.bash_aliases;fi" > bash.bashrc
 cd /$HOME
 cd termuxstyling
 cat README.md

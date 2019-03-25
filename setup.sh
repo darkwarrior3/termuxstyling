@@ -112,10 +112,12 @@ updatedw() {
 		cd termuxstyling
 		var=\$(git pull)
 		git pull --rebase && prm sh
+		clear
 		if [[ ! \$var == *\"Already\"* ]];then shell setup;fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
 		prm sh
+		clear
 		shell setup
 	fi
 }

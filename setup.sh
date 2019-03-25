@@ -4,7 +4,7 @@ echo Script made by:- Dark Warrior
 if [ -e "user.cfg" ]
 then
 	uname=$(sed '1q;d' user.cfg)
-	istate=$(sed "2q;d" user.cfg)
+	istate=$(sed '2q;d' user.cfg)
 	if [ "$istate" -eq "1" ]
 	then
 		read -p "Uninstall? [Y/N]: " ink1
@@ -112,12 +112,11 @@ updatedw() {
 		cd termuxstyling
 		var=\$(git pull)
 		git pull --rebase && prm sh
-<<<<<<< HEAD
 		if [[ ! \$var == *\"Already\"* ]];
 		then 
 			shell setup;
 		fi
-		figlet Success
+		clear && echo \$var && echo -------------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
 		prm sh
@@ -125,7 +124,7 @@ updatedw() {
 		bash
 		shell setup
 		wait
-		figlet Success
+		clear && echo \$var && echo -------------------- && figlet Success && figlet \$(sed '1q;d' ver.cfg)
 	fi
 }
 prm() { chmod 777 *.\$1; }

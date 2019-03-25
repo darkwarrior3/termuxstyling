@@ -112,15 +112,19 @@ updatedw() {
 		cd termuxstyling
 		var=\$(git pull)
 		git pull --rebase && prm sh
-		clear
-		bash
-		if [[ ! \$var == *\"Already\"* ]];then shell setup;else echo \"Already up to date\" fi
+		if [[ ! \$var == *\"Already\"* ]];
+		then 
+			shell setup;
+		fi
+		figlet Success
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
 		prm sh
 		clear
 		bash
 		shell setup
+		wait
+		figlet Success
 	fi
 }
 prm() { chmod 777 *.\$1; }

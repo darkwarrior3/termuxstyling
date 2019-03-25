@@ -16,7 +16,7 @@
 + update **[ usage update = apt-get update && apt-get upgrade]**
 
 #### Uninstalling
-1. ./uninst.sh or sh unist.sh or shell uninst to uninstall styling.
+1. Run the script again to uninstall styling.
 
 *Special Thanks to **xenoCoder01**
 for testing, modifying and helping to make this script work*

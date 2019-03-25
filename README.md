@@ -19,8 +19,8 @@
 + ains **[ usage ains \* = apt install \* ]**
 + dir **[ usage dir = ls ]**
 + update **[ usage update = apt-get update && apt-get upgrade]**
-+ cds **[ usage cds dir_name(***supports pattern matching and sub-directory navigation***) ]**
-+ prm **[ usage prm ext = chmod 777 *.ext )**
++ cds **[ usage cds dir_name(_supports pattern matching and sub-directory navigation_) ]**
++ prm **[ usage prm ext = chmod 777 \*.ext ]**
 
 ###### CDS command guide
 + **Options**

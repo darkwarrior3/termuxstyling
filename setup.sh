@@ -133,6 +133,7 @@ alias ins=\"pkg install\"
 alias ains=\"apt install\"
 alias cls=\"clear\"
 alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
+cd /$HOME
 cds termuxstyling
 cat README.md
 toilet Dark

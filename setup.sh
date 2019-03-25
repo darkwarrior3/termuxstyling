@@ -107,12 +107,13 @@ txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-cd
+cd /\$HOME
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"
 alias ains=\"apt install\"
-alias cls=\"clear\"" > bash.bashrc
+alias cls=\"clear\"
+alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
 cds termuxstyling
 cat README.md
 toilet Dark

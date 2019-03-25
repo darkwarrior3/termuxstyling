@@ -113,7 +113,7 @@ updatedw() {
 		git pull && git reset --hard && chmod +x *.sh
 		if [[ ! \$var == *\"Already\"* ]];then shell setup;fi
 	else
-		git clone https://github.com/darkwarrior3/termuxstyling
+		git clone https://github.com/darkwarrior3/termuxstyling.git && cd termuxstyling && chmod +x *.sh
 		shell setup
 	fi
 }

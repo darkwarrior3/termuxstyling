@@ -14,6 +14,7 @@
 + ains **[ usage ains \* = apt install \* ]**
 + dir **[ usage dir = ls ]**
 + update **[ usage update = apt-get update && apt-get upgrade]**
++ cds **[ usage cds dir_name(***supports pattern matching***) ]**
 
 #### Uninstalling
 1. Run the script again to uninstall styling.

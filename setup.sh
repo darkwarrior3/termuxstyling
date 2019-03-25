@@ -101,7 +101,8 @@ alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"
 alias ains=\"apt install\"
-alias cls=\"clear\"" > bash.bashrc
+alias cls=\"clear\"
+alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
 cds termuxstyling
 cat README.md
 toilet Dark

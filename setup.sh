@@ -75,10 +75,11 @@ apt update
 apt upgrade
 apt install figlet toilet
 pkg install ncurses-utils
+apt-get git
 cd ../usr/etc
 rm motd
 #Set default username if found null
-if [ -z $uname ]
+if [ -z "$uname" ]
 then
 	uname="FemurTech"
 fi
@@ -103,6 +104,17 @@ cds() {
 		cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -name \"\$1\" -print -quit )\"
 	fi
 }
+updtdw() {
+	cd \$HOME
+	if [ -d \"\$HOME/termuxstyling\" ]
+	then
+		cd termuxstyling
+		git pull
+	else
+		git clone https://github.com/darkwarrior3/termuxstyling
+	fi
+}
+prm() { chmod 777 *.\$1; }
 txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:

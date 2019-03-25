@@ -16,6 +16,10 @@
 + update **[ usage update = apt-get update && apt-get upgrade]**
 + cds **[ usage cds dir_name(***supports pattern matching***) ]**
 
+###### CDS command guide
++ **Options**
+  + **-i** *makes the search case insensitive*
+
 #### Uninstalling
 1. Run the script again to uninstall styling.
 

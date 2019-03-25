@@ -21,6 +21,9 @@
 + update **[ usage update = apt-get update && apt-get upgrade]**
 + cds **[ usage cds dir_name(_supports pattern matching and sub-directory navigation_) ]**
 + prm **[ usage prm ext = chmod 777 \*.ext ]**
++ md **[ usage md foldername = mkdir foldername]**
++ msf **[ usage msf = msfconsole]** *to launch metasploit*
++ msfdb **[ usage msfdb = initdb $PREFIX/var/lib/postgresql && pg_ctl -D $PREFIX/var/lib/postgresql start]** *to connect to metasploit database if it isn't connected automatically **which is often**.*
 
 ###### CDS command guide
 + **Options**

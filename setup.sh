@@ -99,7 +99,7 @@ cds() {
 		echo finding \\\"\$qry\\\"
 		cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -iname \"\$qry\" -print -quit )\"
 	else
-		#echo finding \$1
+		echo finding \$1
 		cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -name \"\$1\" -print -quit )\"
 	fi
 }

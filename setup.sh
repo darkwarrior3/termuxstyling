@@ -90,7 +90,18 @@ shell() {
 	sh \$1.sh;bash \$1.bash;
  }
 cds() { 
-	cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -name \"\$1\" -print -quit )\"; 
+	if [[ \$* == *\"-i\"* ]]
+	then
+		var=\"\$*\"
+		sub=\"\"
+		qry=\$( echo \$var | sed 's/-i//g' )
+		qry=\$( echo \$qry | sed 's/ //g' )
+		echo finding \\\"\$qry\\\"
+		cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -iname \"\$qry\" -print -quit )\"
+	else
+		#echo finding \$1
+		cd \"\$( find \"\$(pwd)/\" -not \\( -path \"/sdcard/Android/*\" -prune \\) -type d -maxdepth 3 -name \"\$1\" -print -quit )\"
+	fi
 }
 txt() { cat \$1.*; }
 figlet $uname
@@ -101,8 +112,7 @@ alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"
 alias ains=\"apt install\"
-alias cls=\"clear\"
-alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
+alias cls=\"clear\"" > bash.bashrc
 cds termuxstyling
 cat README.md
 toilet Dark

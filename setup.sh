@@ -135,7 +135,7 @@ alias ains=\"apt install\"
 alias cls=\"clear\"
 alias update=\"apt-get update && apt-get upgrade\"" > bash.bashrc
 cd /$HOME
-cds termuxstyling
+cd termuxstyling
 cat README.md
 toilet Dark
 toilet Warrior

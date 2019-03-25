@@ -76,6 +76,7 @@ apt upgrade
 apt install figlet toilet
 pkg install ncurses-utils
 apt-get install git
+mkdir -p $PREFIX/var/lib/postgresql
 cd ../usr/etc
 rm motd
 #Set default username if found null
@@ -123,6 +124,9 @@ figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[0;92m'
 cd
+alias md=\"mkdir\"
+alias msf=\"msfconsole\"
+alias msfdb=\"initdb $PREFIX/var/lib/postgresql && pg_ctl -D $PREFIX/var/lib/postgresql start\"
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"

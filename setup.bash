@@ -146,9 +146,10 @@ updatedw() {
 		then 
 			clear && echo \"Already running the latest version!!\" && echo ------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg')
 		else
+			git stash
 			git pull --rebase && prm sh
 			shell setup;
-			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
+			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && git stash pop > /dev/null 2>&1
 		fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
@@ -165,19 +166,19 @@ txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
+if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
 then
-	lnum=\$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\" )
+	lnum=\$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/user.cfg\" )
 	lnum=\$( echo \$lnum | sed 's/# 011//g' )
 	lnum=\$( echo \$lnum | sed 's/ //g' )
-	# echo \$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\" )
+	# echo \$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/user.cfg\" )
 		if [[ ! \$lnum -eq 25 ]]
 		then
 			lnum=\$((\$lnum+1))
-			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
+			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
 		else
 			lnum=1
-			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
+			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
 			cd \$HOME
 			cd termuxstyling
 			vtest=\$(git pull)
@@ -189,7 +190,7 @@ then
 		
 	else
 		# echo hi
-		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
+		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
 	fi
 cd
 alias md=\"mkdir\"

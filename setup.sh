@@ -126,6 +126,8 @@ updatedw() {
 		cd termuxstyling
 		var=\$(git pull)
 		git pull --rebase && prm sh
+		echo \$var
+		sleep 5
 		if [[ ! \$var == *\"Already\"* ]];
 		then 
 			shell setup;

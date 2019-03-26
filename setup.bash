@@ -102,7 +102,7 @@ echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }
 shell() { 
-	sh \$1.sh;bash \$1.bash;
+	sh \$1.sh;echo \$?; bash \$1.bash;
  }
 cds() { 
 	if [[ \$* == *\"-i\"* ]]
@@ -133,6 +133,7 @@ cdp() {
 	fi
 }
 updatedw() {
+	ppath=${pwd};
 	cd \$HOME
 	if [ -d \"\$HOME/termuxstyling\" ]
 	then
@@ -158,6 +159,7 @@ updatedw() {
 		wait
 		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '/data/data/com.termux/files/home/termuxstyling/ver.cfg') && figlet FemurTech && echo Restart to apply changes
 	fi
+	cd $ppath
 }
 prm() { chmod +x *.\$1; }
 txt() { cat \$1.*; }

@@ -187,7 +187,7 @@ then
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"
-alias msfdb=\"initdb $PREFIX/var/lib/postgresql && pg_ctl -D $PREFIX/var/lib/postgresql start \"
+alias msfdb=\"initdb \$PREFIX/var/lib/postgresql \&\& pg_ctl -D \$PREFIX/var/lib/postgresql start \"
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"

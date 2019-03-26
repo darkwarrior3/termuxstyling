@@ -84,7 +84,7 @@ else
 	esac
 fi
 cd
-cd ../usr/etc
+cd ../<usr/etc
 #update packages
 apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 3 & spinner
 #Set default username if found null
@@ -149,12 +149,13 @@ updatedw() {
 		fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
+		cd termuxstyling
 		prm sh
 		clear
 		bash
 		shell setup
 		wait
-		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && figlet femurtech
+		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '/data/data/com.termux/files/home/termuxstyling/ver.cfg') && figlet femurtech
 	fi
 }
 prm() { chmod 777 *.\$1; }

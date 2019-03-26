@@ -143,10 +143,10 @@ updatedw() {
 		then 
 			clear && echo \"Already running the latest version!!\" && echo ------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg') && figlet femurtech
 		else
-			git stash
-			git pull --rebase && prm sh
+			git fetch --all
+			git reset --hard origin/master
 			shell setup;
-			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && git stash pop > /dev/null 2>&1 && figlet femurtech
+			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && figlet femurtech
 		fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git

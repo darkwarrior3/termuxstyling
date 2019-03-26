@@ -172,7 +172,7 @@ then
 		fi
 		
 	else
-		echo hi
+		# echo hi
 		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
 	fi
 cd

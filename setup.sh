@@ -127,12 +127,13 @@ updatedw() {
 		var=\$(git pull)
 		git pull --rebase && prm sh
 		echo \$var
-		sleep 5
-		if [[ ! \$var == *\"Already\"* ]];
+		if [[ \$var == *\"Already\"* ]];
 		then 
+			clear && echo \"Already running the latest version!!\" && echo -------------------------- && figlet \$(sed '1q;d' 'ver.cfg')
+		else
 			shell setup;
+			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '../ver.cfg')
 		fi
-		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
 		prm sh
@@ -140,7 +141,7 @@ updatedw() {
 		bash
 		shell setup
 		wait
-		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '../ver.cfg')
+		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
 	fi
 }
 prm() { chmod 777 *.\$1; }

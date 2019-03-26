@@ -149,7 +149,7 @@ PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"
-alias msfdb=\"initdb $PREFIX/var/lib/postgresql && pg_ctl -D $PREFIX/var/lib/postgresql start\"
+alias msfdb=\"initdb $PREFIX/var/lib/postgresql && pg_ctl -D $PREFIX/var/lib/postgresql start \"
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"

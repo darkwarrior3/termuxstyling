@@ -165,6 +165,7 @@ then
 		fI
 	else
 		echo \"1 # 011\" > \"~/termuxstyling/ver.cfg\"
+	fi
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"

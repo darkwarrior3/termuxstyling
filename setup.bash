@@ -9,25 +9,26 @@ spinner(){
 	while kill -0 $PID 2> /dev/null;
 	do  
 		printf '\u2588'
-    	sleep 0.2
+    	sleep 0.1
 	done
 	printf " Done!\n"
+	tput cnorm
 	stty echo
 }
 echo Script made by:- Dark Warrior
 #Uninstall
-if [ -e "user.cfg" ]
+if [ -e ".user.cfg" ]
 then
-	uname=$(sed '1q;d' user.cfg)
-	istate=$(sed '2q;d' user.cfg)
+	uname=$(sed '1q;d' .user.cfg)
+	istate=$(sed '2q;d' .user.cfg)
 	if [ "$istate" -eq "1" ]
 	then
 		read -p "Uninstall? [Y/N]: " ink1
 		case $ink1 in
 			[yY][eE][sS]|[yY])
-		rm user.cfg;
-		echo $uname > user.cfg
-		echo 0 >> user.cfg
+		rm .user.cfg;
+		echo $uname > .user.cfg
+		echo 0 >> .user.cfg
 		cd
 		cd /$HOME
 		cd ..
@@ -60,23 +61,23 @@ then
 	fi
 fi
 #Assigns Username
-if [ ! -e "user.cfg" ] 
+if [ ! -e ".user.cfg" ] 
 then
 	read -p "Type your username: " uname </dev/tty
 	echo "This is your username: $uname"
-	echo "$uname" > user.cfg
-	echo "1" >> user.cfg
+	echo "$uname" > .user.cfg
+	echo "1" >> .user.cfg
 #Rename Username
 else
-	rm user.cfg
-	echo "$uname" > user.cfg
-	echo "1" >> user.cfg
+	rm .user.cfg
+	echo "$uname" > .user.cfg
+	echo "1" >> .user.cfg
 	read -p "Would You Like to Change Your Username[Y/N]: " ink
 	case "$ink" in
 		[yY][eE][sS]|[yY])
-	rm user.cfg;
+	rm .user.cfg;
 	clear
-	sh setup.sh;
+	bash setup.bash;
 	;;
 	*)
 	echo "Welcome back $uname"
@@ -84,9 +85,9 @@ else
 	esac
 fi
 cd
-cd ../<usr/etc
+cd ../usr/etc
 #update packages
-apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 3 & spinner
+apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 2 & spinner
 #Set default username if found null
 if [ -z "$uname" ]
 then
@@ -158,24 +159,24 @@ updatedw() {
 		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '/data/data/com.termux/files/home/termuxstyling/ver.cfg') && figlet femurtech
 	fi
 }
-prm() { chmod 777 *.\$1; }
+prm() { chmod +x *.\$1; }
 txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
+if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
 then
-	lnum=\$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/user.cfg\" )
+	lnum=\$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\" )
 	lnum=\$( echo \$lnum | sed 's/# 011//g' )
 	lnum=\$( echo \$lnum | sed 's/ //g' )
-	# echo \$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/user.cfg\" )
+	# echo \$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\" )
 		if [[ ! \$lnum -eq 25 ]]
 		then
 			lnum=\$((\$lnum+1))
-			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
+			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
 		else
 			lnum=1
-			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
+			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
 			cd \$HOME
 			cd termuxstyling
 			vtest=\$(git pull)
@@ -187,7 +188,7 @@ then
 		
 	else
 		# echo hi
-		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/user.cfg\"
+		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
 	fi
 cd
 alias md=\"mkdir\"

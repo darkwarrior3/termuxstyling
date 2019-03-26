@@ -132,7 +132,7 @@ updatedw() {
 			clear && echo \"Already running the latest version!!\" && echo -------------------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg')
 		else
 			shell setup;
-			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '../ver.cfg')
+			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
 		fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git

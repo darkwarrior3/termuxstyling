@@ -87,23 +87,29 @@ fi
 cd
 cd ../usr/etc
 #update packages
-apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 2 & spinner
+apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 2 & spinner
 #Set default username if found null
 if [ -z "$uname" ]
 then
 	uname="FemurTech"
 fi
 #Sets bash.bashrc aka startup
-cd /$HOME
-cd ..
-cd usr/etc
-rm motd
+rm motd;
 echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }
-shell() { 
-	sh \$1.sh;echo \$?; bash \$1.bash;
- }
+shell() {
+	sh \$1.sh>/dev/null 2>&1;
+	local pid=\$?
+	#echo \$pid
+	if [[ \$pid -eq 0 ]];
+	then
+		#echo hi;
+		sh \$1.sh;
+	fi;
+	#echo \$?;
+	bash \$1.bash;
+}
 cds() { 
 	if [[ \$* == *\"-i\"* ]]
 	then
@@ -205,7 +211,7 @@ alias rf=\"rm -rf\"
 alias gic=\"git clone\"
 alias fuck=\"printf '\e[0m';figlet FUCK;figlet OFF\"
 alias upg=\"git reset --hard;git pull\"
-alias update=\"apt-get update;apt-get upgrade\"" > bash.bashrc
+alias update=\"apt-get update;apt-get upgrade\"" > /data/data/com.termux/files/usr/etc/bash.bashrc
 cd /$HOME
 cd termuxstyling
 cat README.md

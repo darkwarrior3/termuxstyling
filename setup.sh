@@ -155,7 +155,7 @@ then
 	lnum=\$( echo \$lnum | sed 's/# 011//g' )
 	lnum=\$( echo \$lnum | sed 's/ //g' )
 	# echo \$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\" )
-		if [[ ! \$lnum -eq 10 ]]
+		if [[ ! \$lnum -eq 25 ]]
 		then
 			lnum=\$((\$lnum+1))
 			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"

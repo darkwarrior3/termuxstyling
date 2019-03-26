@@ -149,9 +149,9 @@ txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-if grep -q '# 011' '~/termuxstyling/ver.cfg'
+if grep -q '# 011' \"~/termuxstyling/ver.cfg\"
 then
-	ln=\$( sed '2q;d' '~/termuxstyling/ver.cfg' )
+	ln=\$( sed '2q;d' \"~/termuxstyling/ver.cfg\" )
 	ln=\$( echo \$ln | sed 's/# 011//g' )
 	ln=\$( echo \$ln | sed 's/ //g' )
 		if [ \$ln -neq 10 ]

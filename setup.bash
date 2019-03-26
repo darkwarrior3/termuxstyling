@@ -194,14 +194,14 @@ cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"
 alias msfdb=\"initdb \$PREFIX/var/lib/postgresql;pg_ctl -D \$PREFIX/var/lib/postgresql start \"
-alias clear=\"clear;bash\"
+alias clear=\"clear;printf '\e[0m';figlet $uname\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"
 alias ains=\"apt install\"
 alias cls=\"clear\"
 alias rf=\"rm -rf\"
 alias gic=\"git clone\"
-alias fuck=\"figlet FUCK;figlet OFF\"
+alias fuck=\"printf '\e[0m';figlet FUCK;figlet OFF\"
 alias upg=\"git reset --hard;git pull\"
 alias update=\"apt-get update;apt-get upgrade\"" > bash.bashrc
 cd /$HOME

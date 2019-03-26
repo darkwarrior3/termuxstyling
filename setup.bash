@@ -150,7 +150,7 @@ updatedw() {
 		bash
 		shell setup
 		wait
-		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
+		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
 	fi
 }
 prm() { chmod 777 *.\$1; }

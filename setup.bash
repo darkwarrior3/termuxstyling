@@ -93,6 +93,10 @@ then
 	uname="FemurTech"
 fi
 #Sets bash.bashrc aka startup
+cd /$HOME
+cd ..
+cd usr/etc
+rm motd
 echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }
@@ -207,3 +211,4 @@ echo Script made by Dark Warrior
 echo Subscribe to our YT channel FemurTech
 echo tinyurl.com/femurtech
 echo Restart to apply changes
+cd

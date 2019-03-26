@@ -149,22 +149,31 @@ txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-if grep -q '# 011' \"~/termuxstyling/ver.cfg\"
+if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
 then
-	ln=\$( sed '2q;d' \"~/termuxstyling/ver.cfg\" )
-	ln=\$( echo \$ln | sed 's/# 011//g' )
-	ln=\$( echo \$ln | sed 's/ //g' )
-		if [ \$ln -neq 10 ]
+	lnum=\$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\" )
+	lnum=\$( echo \$lnum | sed 's/# 011//g' )
+	lnum=\$( echo \$lnum | sed 's/ //g' )
+	# echo \$( sed '2q;d' \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\" )
+		if [[ ! \$lnum -eq 10 ]]
 		then
-			ln=\$ln+1
-			sed -i \"/.*# 011.*/ c\\\$ln # 011\" \"~/termuxstyling/ver.cfg\"
+			lnum=\$((\$lnum+1))
+			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
 		else
-			ln=1
-			sed -i \"/.*# 011.*/ c\\\$ln # 011\" \"~/termuxstyling/ver.cfg\"
-			updatedw
+			lnum=1
+			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
+			cd \$HOME
+			cd termuxstyling
+			vtest=\$(git pull)
+			if [[ ! \$vtest == *\"Already\"* ]];
+			then
+				updatedw
+			fi
 		fi
+		
 	else
-		echo \"1 # 011\" > \"~/termuxstyling/ver.cfg\"
+		echo hi
+		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/ver.cfg\"
 	fi
 cd
 alias md=\"mkdir\"

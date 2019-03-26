@@ -84,7 +84,7 @@ else
 	esac
 fi
 cd
-cd /$HOME
+cd ../usr/etc
 #update packages
 apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 3 & spinner
 #Set default username if found null
@@ -197,8 +197,7 @@ alias rf=\"rm -rf\"
 alias gic=\"git clone\"
 alias fuck=\"figlet FUCK;figlet OFF\"
 alias upg=\"git reset --hard;git pull\"
-alias update=\"apt-get update;apt-get upgrade\"
-if [ -e \".bash_aliases\" ];then sh ~/../usr/etc/.bash_aliases;fi" > bash.bashrc
+alias update=\"apt-get update;apt-get upgrade\"" > bash.bashrc
 cd /$HOME
 cd termuxstyling
 cat README.md

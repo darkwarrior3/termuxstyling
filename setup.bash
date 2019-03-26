@@ -9,7 +9,7 @@ spinner()
 	while kill -0 $PID 2> /dev/null;
 	do  
 		printf '\u2588'
-    	sleep 1
+    	sleep 0.2
 	done
 printf " Done!\n"
 }
@@ -85,7 +85,7 @@ fi
 cd
 cd /$HOME
 #update packages
-apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null & sleep 3 2>&1 & spinner
+apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 3 & spinner
 #Set default username if found null
 if [ -z "$uname" ]
 then

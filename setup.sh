@@ -162,7 +162,7 @@ then
 			ln=1
 			sed -i \"/.*# 011.*/ c\\\$ln # 011\" \"~/termuxstyling/ver.cfg\"
 			updatedw
-		fI
+		fi
 	else
 		echo \"1 # 011\" > \"~/termuxstyling/ver.cfg\"
 	fi

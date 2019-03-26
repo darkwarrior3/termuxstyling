@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # Setting up commands
-spinner()
-{
+spinner(){
+	stty -echo
 	PID=$!
 	tput civis
 	echo -n "Installing "
@@ -11,7 +11,8 @@ spinner()
 		printf '\u2588'
     	sleep 0.2
 	done
-printf " Done!\n"
+	printf " Done!\n"
+	stty echo
 }
 echo Script made by:- Dark Warrior
 #Uninstall

@@ -96,6 +96,7 @@ fi
 cd /$HOME
 cd ..
 cd usr/etc
+rm motd
 echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }

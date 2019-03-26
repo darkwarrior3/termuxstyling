@@ -129,7 +129,7 @@ updatedw() {
 		echo \$var
 		if [[ \$var == *\"Already\"* ]];
 		then 
-			clear && echo \"Already running the latest version!!\" && echo -------------------------- && figlet \$(sed '1q;d' 'ver.cfg')
+			clear && echo \"Already running the latest version!!\" && echo -------------------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg')
 		else
 			shell setup;
 			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '../ver.cfg')

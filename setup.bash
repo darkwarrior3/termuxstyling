@@ -136,12 +136,12 @@ updatedw() {
 		# echo \$var
 		if [[ \$var == *\"Already\"* ]];
 		then 
-			clear && echo \"Already running the latest version!!\" && echo ------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg')
+			clear && echo \"Already running the latest version!!\" && echo ------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg') && figlet femurtech
 		else
 			git stash
 			git pull --rebase && prm sh
 			shell setup;
-			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && git stash pop > /dev/null 2>&1
+			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && git stash pop > /dev/null 2>&1 && figlet femurtech
 		fi
 	else
 		git clone https://github.com/darkwarrior3/termuxstyling.git
@@ -150,7 +150,7 @@ updatedw() {
 		bash
 		shell setup
 		wait
-		clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg')
+		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && figlet femurtech
 	fi
 }
 prm() { chmod 777 *.\$1; }
@@ -187,13 +187,16 @@ then
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"
-alias msfdb=\"initdb \$PREFIX/var/lib/postgresql \&\& pg_ctl -D \$PREFIX/var/lib/postgresql start \"
+alias msfdb=\"initdb \$PREFIX/var/lib/postgresql;pg_ctl -D \$PREFIX/var/lib/postgresql start \"
 alias clear=\"clear;bash\"
 alias dir=\"ls\"
 alias ins=\"pkg install\"
 alias ains=\"apt install\"
 alias cls=\"clear\"
-alias update=\"apt-get update && apt-get upgrade\"
+alias rf=\"rm -rf\"
+alias gic=\"git clone\"
+alias upg=\"git reset --hard;git pull\"
+alias update=\"apt-get update;apt-get upgrade\"
 if [ -e \".bash_aliases\" ];then sh ~/../usr/etc/.bash_aliases;fi" > bash.bashrc
 cd /$HOME
 cd termuxstyling

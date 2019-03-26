@@ -85,16 +85,7 @@ fi
 cd
 cd /$HOME
 #update packages
-apt-get update > /dev/null 2>&1 & spinner
-apt-get upgrade -y > /dev/null 2>&1 & spinner
-apt-get autoremove > /dev/null 2>&1 & spinner
-apt-get autoclean > /dev/null 2>&1 & spinner
-apt install figlet toilet -y > /dev/null 2>&1 & spinner
-pkg install ncurses-utils -y > /dev/null 2>&1 & spinner
-apt-get install git -y > /dev/null 2>&1 & spinner
-mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & spinner
-cd ../usr/etc > /dev/null 2>&1 & spinner
-rm motd > /dev/null 2>&1 & spinner
+apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & cd ../usr/etc > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & spinner
 #Set default username if found null
 if [ -z "$uname" ]
 then

@@ -198,7 +198,7 @@ alias rf=\"rm -rf\"
 alias gic=\"git clone\"
 alias upg=\"git reset --hard
 git pull\"
-
+alias fuck=\"echo "You FUCK off!!"\"
 alias update=\"apt-get update && apt-get upgrade\"
 if [ -e \".bash_aliases\" ];then sh ~/../usr/etc/.bash_aliases;fi" > bash.bashrc
 cd /$HOME

@@ -195,6 +195,7 @@ alias ains=\"apt install\"
 alias cls=\"clear\"
 alias rf=\"rm -rf\"
 alias gic=\"git clone\"
+alias fuck=\"figlet FUCK;figlet OFF\"
 alias upg=\"git reset --hard;git pull\"
 alias update=\"apt-get update;apt-get upgrade\"
 if [ -e \".bash_aliases\" ];then sh ~/../usr/etc/.bash_aliases;fi" > bash.bashrc

@@ -1,20 +1,88 @@
 #!/data/data/com.termux/files/usr/bin/bash
+clear
 # Setting up commands
-spinner(){
+getCPos() (
+	local opt=$*
+	exec < /dev/tty
+	oldstty=$(stty -g)
+	stty raw -echo min 0
+	# on my system, the following line can be replaced by the line below it
+	echo -en "\033[6n" > /dev/tty
+	# tput u7 > /dev/tty    # when TERM=xterm (and relatives)
+	IFS=';' read -r -d R -a pos
+	stty $oldstty
+	# change from one-based to zero based so they work with: tput cup $row $col
+	row=$((${pos[0]:2} - 1))    # strip off the esc-[
+	col=$((${pos[1]} - 1))
+	if [[ $opt =~ .*-row.* ]]
+	then
+		printf $row
+	else
+		printf $col
+	fi
+)
+spinner() (
 	stty -echo
 	PID=$!
+	local opt=$*
 	tput civis
-	echo -n "Installing "
-	# While process is running...
-	while kill -0 $PID 2> /dev/null;
-	do  
-		printf '\u2588'
-    	sleep 0.1
-	done
-	printf " Done!\n"
+	cstat(){
+		local optstat="$(if [[ ! $opt =~ .*$1.* ]]
+						 then
+							 echo 0
+						 else
+							 echo 1
+						 fi)"
+		#echo $opt
+		echo $optstat
+	}
+	#echo $(cstat -s)
+	if [ "$(cstat -s)" -eq 1 ]
+	then
+		echo "Installing:-"
+		printf '\n'
+		# While process is running...
+		while kill -0 $PID 2> /dev/null;
+		do  
+			printf '\u2588\e[1B\e[1D\u2588\e[1A'
+    		sleep 0.07
+		done
+	elif [ "$(cstat -p)" -eq 1 ]
+	then
+		while kill -0 $PID 2> /dev/null;
+		do  
+			printf '\u2588\e[1B\e[1D\u2588\e[1A'
+    		sleep 0.07
+		done
+	elif [ "$(cstat -t)" -eq 1 ]
+	then
+		until [ $(getCPos) -eq $(($(tput cols))) ]
+		do
+			#echo $(getCPos) >> log.txt
+			#getCPos
+			#tput cols
+			if [ ! $(getCPos) -eq $(($(tput cols)-1)) ]
+			then
+				printf '\u2588\e[1B\e[1D\u2588\e[1A'
+				sleep 0.07
+			else
+				#echo 1
+				#echo hi
+				local row=$(($(getCPos -row)+1))
+				local plen=$(tput cols)
+				printf '\u2588'
+				tput cup "$row" "$plen"
+				printf '\u2588'
+				break
+			fi
+		done
+		printf "\n\n\nDone!\n"
+	fi
+	#echo hh
 	tput cnorm
 	stty echo
-}
+)
+#Script starts
 echo Script made by:- Dark Warrior
 #Uninstall
 if [ -e ".user.cfg" ]
@@ -80,21 +148,28 @@ else
 	bash setup.bash;
 	;;
 	*)
+	clear
 	echo "Welcome back $uname"
 	;;
 	esac
 fi
-cd
-cd ../usr/etc
 #update packages
-apt-get update > /dev/null 2>&1 & apt-get upgrade -y > /dev/null 2>&1 & apt-get autoremove > /dev/null 2>&1 & apt-get autoclean > /dev/null 2>&1 & apt install figlet toilet -y > /dev/null 2>&1 & pkg install ncurses-utils -y > /dev/null 2>&1 & apt-get install git -y > /dev/null 2>&1 & mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 > /dev/null 2>&1 & rm motd > /dev/null 2>&1 & sleep 2 & spinner
+apt-get update > /dev/null 2>&1 & spinner -s
+apt-get upgrade -y > /dev/null 2>&1 & spinner -p
+apt-get autoremove > /dev/null 2>&1 & spinner -p
+apt-get autoclean > /dev/null 2>&1 & spinner -p
+apt install figlet toilet -y > /dev/null 2>&1 & spinner -p
+pkg install ncurses-utils -y > /dev/null 2>&1 & spinner -p
+apt-get install git -y > /dev/null 2>&1 & spinner -p
+mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & spinner -p
+if [ -e "/data/data/com.termux/files/usr/etc/motd" ];then rm ~/../usr/etc/motd;fi & spinner -p
+sleep 0.1 & spinner -t
 #Set default username if found null
 if [ -z "$uname" ]
 then
 	uname="FemurTech"
 fi
 #Sets bash.bashrc aka startup
-rm motd;
 echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }
@@ -214,11 +289,10 @@ alias upg=\"git reset --hard;git pull\"
 alias update=\"apt-get update;apt-get upgrade\"" > /data/data/com.termux/files/usr/etc/bash.bashrc
 cd /$HOME
 cd termuxstyling
-cat README.md
+#cat README.md
 toilet Dark
 toilet Warrior
 echo Script made by Dark Warrior
 echo Subscribe to our YT channel FemurTech
 echo tinyurl.com/femurtech
 echo Restart to apply changes
-cd

@@ -1,5 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 clear
+#installing necessary packages
+apt install figlet toilet -y > /dev/null 2>&1
+pkg install ncurses-utils -y > /dev/null 2>&1
 # Setting up commands
 getCPos() (
 	local opt=$*
@@ -104,7 +107,7 @@ then
 		echo "command_not_found_handle() {
         	/data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
 		} 
-		PS1='\$ '" > bash.bashrc
+		PS1='\$ '" > bash.bashrc & echo "" & spinner -t && clear
 		echo "Welcome to Termux!
 		Wiki:            https://wiki.termux.com
 		Community forum: https://termux.com/community
@@ -121,7 +124,7 @@ then
 		figlet FemurTech
 		echo Now Your Termux is back to Original
 		echo "Uninstalled Succesfully"
-		return
+		exit 0
 		;;
 			*)
 		;;
@@ -135,6 +138,7 @@ then
 	echo "This is your username: $uname"
 	echo "$uname" > .user.cfg
 	echo "1" >> .user.cfg
+	clear
 #Rename Username
 else
 	rm .user.cfg
@@ -158,8 +162,6 @@ apt-get update > /dev/null 2>&1 & spinner -s
 apt-get upgrade -y > /dev/null 2>&1 & spinner -p
 apt-get autoremove > /dev/null 2>&1 & spinner -p
 apt-get autoclean > /dev/null 2>&1 & spinner -p
-apt install figlet toilet -y > /dev/null 2>&1 & spinner -p
-pkg install ncurses-utils -y > /dev/null 2>&1 & spinner -p
 apt-get install git -y > /dev/null 2>&1 & spinner -p
 mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & spinner -p
 if [ -e "/data/data/com.termux/files/usr/etc/motd" ];then rm ~/../usr/etc/motd;fi & spinner -p

@@ -270,6 +270,7 @@ then
 			test=\$(git status | grep 'Your branch')
 			# echo \$test
 			if [[ ! \$test == *\"up to date\"* ]];
+			then
 				updatedw
 			fi
 		fi

@@ -1,5 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 clear
+#get current dir
+pdir=$(pwd)
+cd $HOME
+cd termuxstyling
 #installing necessary packages
 apt install figlet toilet -y > /dev/null 2>&1
 pkg install ncurses-utils -y > /dev/null 2>&1
@@ -231,7 +235,7 @@ updatedw() {
 		else
 			git fetch --all
 			git reset --hard origin/master
-			shell setup;
+			bash setup.sh;
 			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && figlet FemurTech && echo Restart to apply changes
 		fi
 	else
@@ -239,8 +243,8 @@ updatedw() {
 		cd termuxstyling
 		prm sh
 		clear
-		bash
-		shell setup
+		figlet $uname
+		bash setup.sh
 		wait
 		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '/data/data/com.termux/files/home/termuxstyling/ver.cfg') && figlet FemurTech && echo Restart to apply changes
 	fi
@@ -300,6 +304,7 @@ toilet Dark
 toilet Warrior
 sleep 3
 mdv README.md
+cd $pdir
 echo Subscribe to our YT channel FemurTech
 echo tinyurl.com/femurtech
 echo Restart to apply changes

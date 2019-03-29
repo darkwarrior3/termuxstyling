@@ -25,8 +25,8 @@ getCPos() (
 	fi
 )
 spinner() (
-	stty -echo
 	PID=$!
+	stty -echo
 	local opt=$*
 	tput civis
 	cstat(){
@@ -48,14 +48,14 @@ spinner() (
 		while kill -0 $PID 2> /dev/null;
 		do  
 			printf '\u2588\e[1B\e[1D\u2588\e[1A'
-    		sleep 0.07
+    		sleep 0.05
 		done
 	elif [ "$(cstat -p)" -eq 1 ]
 	then
 		while kill -0 $PID 2> /dev/null;
 		do  
 			printf '\u2588\e[1B\e[1D\u2588\e[1A'
-    		sleep 0.07
+    		sleep 0.05
 		done
 	elif [ "$(cstat -t)" -eq 1 ]
 	then
@@ -67,7 +67,7 @@ spinner() (
 			if [ ! $(getCPos) -eq $(($(tput cols)-1)) ]
 			then
 				printf '\u2588\e[1B\e[1D\u2588\e[1A'
-				sleep 0.07
+				sleep 0
 			else
 				#echo 1
 				#echo hi
@@ -85,6 +85,16 @@ spinner() (
 	tput cnorm
 	stty echo
 )
+#Updating secondary packages
+echo Updating Packages....
+printf '\n'
+pip install mdv > /dev/null 2>&1 & spinner -s
+apt-get update > /dev/null 2>&1 & spinner -p
+apt-get upgrade -y > /dev/null 2>&1 & spinner -p
+apt-get autoremove > /dev/null 2>&1 & spinner -p
+apt-get autoclean > /dev/null 2>&1 & spinner -p
+apt-get install git -y > /dev/null 2>&1 & spinner -t
+clear
 #Script starts
 echo Script made by:- Dark Warrior
 #Uninstall
@@ -157,13 +167,8 @@ else
 	;;
 	esac
 fi
-#update packages
-apt-get update > /dev/null 2>&1 & spinner -s
-apt-get upgrade -y > /dev/null 2>&1 & spinner -p
-apt-get autoremove > /dev/null 2>&1 & spinner -p
-apt-get autoclean > /dev/null 2>&1 & spinner -p
-apt-get install git -y > /dev/null 2>&1 & spinner -p
-mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & spinner -p
+#installing script
+mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & spinner -s
 if [ -e "/data/data/com.termux/files/usr/etc/motd" ];then rm ~/../usr/etc/motd;fi & spinner -p
 sleep 0.1 & spinner -t
 #Set default username if found null
@@ -176,16 +181,12 @@ echo "command_not_found_handle() {
         /data/data/com.termux/files/usr/libexec/termux/command-not-found "'$1'"
 }
 shell() {
-	sh \$1.sh>/dev/null 2>&1;
-	local pid=\$?
-	#echo \$pid
-	if [[ \$pid -eq 0 ]];
-	then
-		#echo hi;
-		sh \$1.sh;
-	fi;
-	#echo \$?;
+	bash \$1.sh;
 	bash \$1.bash;
+}
+shellx() {
+	bash \$1*.sh;
+	bash \$1*.bash;
 }
 cds() { 
 	if [[ \$* == *\"-i\"* ]]
@@ -221,9 +222,10 @@ updatedw() {
 	if [ -d \"\$HOME/termuxstyling\" ]
 	then
 		cd termuxstyling
-		var=\$(git pull)
+		git fetch >/dev/null
+		var=\$(git status | grep 'Your branch')
 		# echo \$var
-		if [[ \$var == *\"Already\"* ]];
+		if [[ \$var == *\"up to date\"* ]];
 		then 
 			clear && echo \"Already running the latest version!!\" && echo ------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg') && figlet FemurTech
 		else
@@ -291,10 +293,11 @@ alias upg=\"git reset --hard;git pull\"
 alias update=\"apt-get update;apt-get upgrade\"" > /data/data/com.termux/files/usr/etc/bash.bashrc
 cd /$HOME
 cd termuxstyling
-#cat README.md
+echo Script made by
 toilet Dark
 toilet Warrior
-echo Script made by Dark Warrior
+sleep 3
+mdv README.md
 echo Subscribe to our YT channel FemurTech
 echo tinyurl.com/femurtech
 echo Restart to apply changes

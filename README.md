@@ -1,15 +1,19 @@
+### Source
 # Made By DarkWarrior
-### This script will make your termux look better. Enjoy! ! 
-
+### This script will make your termux look better. Enjoy!! 
+----
 #### Installing
 
 1. chmod +x \*.\*
 2. ./setup.sh or sh setup.sh to install styling. 
 
+----
+
 #### Updating
 
 1. use command **updatedw** to update the script.
 
+----
 
 #### Features
 ##### Custom Commands
@@ -28,9 +32,11 @@
 ###### CDS command guide
 + **Options**
   + **-i** *makes the search case insensitive*
+  
+----
 
 #### Uninstalling
 1. Run the script again to uninstall styling.
 
-*Special Thanks to **xenoCoder01**
-for testing, modifying and helping to make this script work*
+----
+!!! note: Special Thanks to **xenoCoder01** for testing, modifying and helping to make this script work

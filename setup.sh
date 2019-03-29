@@ -233,9 +233,8 @@ updatedw() {
 		then 
 			clear && echo \"Already running the latest version!!\" && echo ------------------------------------- && figlet \$(sed '1q;d' 'ver.cfg') && figlet FemurTech
 		else
-			git fetch --all
-			git reset --hard origin/master
-			shell setup;
+			git pull
+			bash setup.sh;
 			clear && echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' 'ver.cfg') && figlet FemurTech && echo Restart to apply changes
 		fi
 	else
@@ -244,7 +243,7 @@ updatedw() {
 		prm sh
 		clear
 		bash
-		shell setup
+		bash setup.sh
 		wait
 		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '/data/data/com.termux/files/home/termuxstyling/ver.cfg') && figlet FemurTech && echo Restart to apply changes
 	fi

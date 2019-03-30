@@ -185,13 +185,25 @@ echo "command_not_found_handle() {
 }
 shell() {
 	bash \$1.sh 2>/dev/null
-	if [ $? ];then return;fi
-	bash \$1.bash;
+	if [ \$? -ne 0 ]
+	then 
+		bash \$1.bash 2>/dev/null
+		if [ \$? -ne 0 ]
+		then
+			printf '\e[0;31mNo shell script found\n'
+		fi
+	fi
 }
 shellx() {
-	bash \$1*.sh;
-	if [ $? ];then return;fi
-	bash \$1*.bash;
+	bash \$1*.sh 2>/dev/null
+	if [ \$? -ne 0 ]
+	then 
+		bash \$1*.bash 2>/dev/null
+		if [ \$? -ne 0 ]
+		then
+			printf '\e[0;31mNo shell script found\n'
+		fi
+	fi
 }
 cds() { 
 	if [[ \$* == *\"-i\"* ]]

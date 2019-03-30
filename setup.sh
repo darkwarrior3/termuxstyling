@@ -2,8 +2,6 @@
 clear
 #get current dir
 pdir=$(pwd)
-cd $HOME
-cd termuxstyling
 #installing necessary packages
 apt install figlet toilet -y > /dev/null 2>&1
 pkg install ncurses-utils -y > /dev/null 2>&1
@@ -46,20 +44,19 @@ spinner() (
 	#echo $(cstat -s)
 	if [ "$(cstat -s)" -eq 1 ]
 	then
-		echo "Installing:-"
 		printf '\n'
 		# While process is running...
 		while kill -0 $PID 2> /dev/null;
 		do  
 			printf '\u2588\e[1B\e[1D\u2588\e[1A'
-    		sleep 0.05
+    		sleep 0.3
 		done
 	elif [ "$(cstat -p)" -eq 1 ]
 	then
 		while kill -0 $PID 2> /dev/null;
 		do  
 			printf '\u2588\e[1B\e[1D\u2588\e[1A'
-    		sleep 0.05
+    		sleep 0.3
 		done
 	elif [ "$(cstat -t)" -eq 1 ]
 	then
@@ -71,7 +68,7 @@ spinner() (
 			if [ ! $(getCPos) -eq $(($(tput cols)-1)) ]
 			then
 				printf '\u2588\e[1B\e[1D\u2588\e[1A'
-				sleep 0
+				printf '\u2588\e[1B\e[1D\u2588\e[1A'
 			else
 				#echo 1
 				#echo hi
@@ -90,16 +87,17 @@ spinner() (
 	stty echo
 )
 #Updating secondary packages
-echo Updating Packages....
-printf '\n'
+echo Updating Packages....	
 pip install mdv > /dev/null 2>&1 & spinner -s
 apt-get update > /dev/null 2>&1 & spinner -p
 apt-get upgrade -y > /dev/null 2>&1 & spinner -p
 apt-get autoremove > /dev/null 2>&1 & spinner -p
 apt-get autoclean > /dev/null 2>&1 & spinner -p
-apt-get install git -y > /dev/null 2>&1 & spinner -t
+apt-get install git -y > /dev/null 2>&1 & spinner -p && spinner -t
 clear
 #Script starts
+#cd $HOME
+#cd termuxstyling
 echo Script made by:- Dark Warrior
 #Uninstall
 if [ -e ".user.cfg" ]
@@ -108,7 +106,8 @@ then
 	istate=$(sed '2q;d' .user.cfg)
 	if [ "$istate" -eq "1" ]
 	then
-		read -p "Uninstall? [Y/N]: " ink1
+		printf "Uninstall? [Y/N]: "
+		read ink1
 		case $ink1 in
 			[yY][eE][sS]|[yY])
 		rm .user.cfg;
@@ -148,22 +147,21 @@ fi
 #Assigns Username
 if [ ! -e ".user.cfg" ] 
 then
-	read -p "Type your username: " uname </dev/tty
+	printf "Type your username: "
+	read uname
 	echo "This is your username: $uname"
 	echo "$uname" > .user.cfg
 	echo "1" >> .user.cfg
 	clear
 #Rename Username
 else
-	rm .user.cfg
-	echo "$uname" > .user.cfg
-	echo "1" >> .user.cfg
-	read -p "Would You Like to Change Your Username[Y/N]: " ink
+	printf "Would You Like to Change Your Username[Y/N]: "
+	read ink
 	case "$ink" in
 		[yY][eE][sS]|[yY])
 	rm .user.cfg;
 	clear
-	bash setup.bash;
+	bash setup.sh;
 	;;
 	*)
 	clear
@@ -172,9 +170,10 @@ else
 	esac
 fi
 #installing script
+echo "Installing..."
 mkdir -p $PREFIX/var/lib/postgresql > /dev/null 2>&1 & spinner -s
 if [ -e "/data/data/com.termux/files/usr/etc/motd" ];then rm ~/../usr/etc/motd;fi & spinner -p
-sleep 0.1 & spinner -t
+sleep 0.1 & spinner -p && spinner -t
 #Set default username if found null
 if [ -z "$uname" ]
 then
@@ -186,10 +185,12 @@ echo "command_not_found_handle() {
 }
 shell() {
 	bash \$1.sh 2>/dev/null
+	if [ $? ];then return;fi
 	bash \$1.bash;
 }
 shellx() {
 	bash \$1*.sh;
+	if [ $? ];then return;fi
 	bash \$1*.bash;
 }
 cds() { 
@@ -221,7 +222,7 @@ cdp() {
 	fi
 }
 updatedw() {
-	ppath=${pwd};
+	ppath=\${pwd};
 	cd \$HOME
 	if [ -d \"\$HOME/termuxstyling\" ]
 	then
@@ -247,41 +248,46 @@ updatedw() {
 		wait
 		echo \"Update Success\" && echo -------------- && figlet Success && figlet \$(sed '1q;d' '/data/data/com.termux/files/home/termuxstyling/ver.cfg') && figlet FemurTech && echo Restart to apply changes
 	fi
-	cd $ppath
+	cd \$ppath
 }
 prm() { chmod +x *.\$1; }
 txt() { cat \$1.*; }
 figlet $uname
 PS1='\033[1;91mroot@termux[\033[1;93m\W\033[1;91m]:
 # \033[1;92m'
-if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
+if [ -d \"\$HOME/termuxstyling\" ]
 then
-	lnum=\$( sed '3q;d' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\" )
-	lnum=\$( echo \$lnum | sed 's/# 011//g' )
-	lnum=\$( echo \$lnum | sed 's/ //g' )
-	echo \$( sed '3q;d' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\" )
-		if [[ ! \$lnum -eq 5 ]]
-		then
-			lnum=\$((\$lnum+1))
-			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
-		else
-			lnum=1
-			sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
-			cd \$HOME
-			cd termuxstyling
-			git fetch >/dev/null
-			test=\$(git status | grep 'Your branch')
-			# echo \$test
-			if [[ ! \$test == *\"up to date\"* ]];
+	if grep -q '# 011' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
+	then
+		lnum=\$( sed '3q;d' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\" )
+		lnum=\$( echo \$lnum | sed 's/# 011//g' )
+		lnum=\$( echo \$lnum | sed 's/ //g' )
+		echo \$( sed '3q;d' \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\" )
+			if [[ ! \$lnum -eq 5 ]]
 			then
-				updatedw
+				lnum=\$((\$lnum+1))
+				sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
+			else
+				lnum=1
+				sed -i \"/.*# 011.*/ c\\ \$lnum # 011\" \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
+				cd \$HOME
+				cd termuxstyling
+				git fetch >/dev/null
+				test=\$(git status | grep 'Your branch')
+				echo \$test
+				sleep 5
+				if [[ ! \$test == *\"up to date\"* ]];
+				then
+					updatedw
+				fi
 			fi
-		fi
-		
 	else
-		# echo hi
+		echo hi
 		echo \"1 # 011\" >> \"/data/data/com.termux/files/home/termuxstyling/.user.cfg\"
 	fi
+else
+	updatedw
+fi
 cd
 alias md=\"mkdir\"
 alias msf=\"msfconsole\"
@@ -301,7 +307,7 @@ cd termuxstyling
 echo Script made by
 toilet Dark
 toilet Warrior
-sleep 3
+sleep 2
 mdv README.md
 cd $pdir
 echo Subscribe to our YT channel FemurTech

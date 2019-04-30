@@ -1,6 +1,6 @@
 # Made By DarkWarrior
 ### This script will make your termux look better. Enjoy! ! 
-
+![logo](logo.jpg)
 #### Installing
 
 1. chmod +x \*.\*
